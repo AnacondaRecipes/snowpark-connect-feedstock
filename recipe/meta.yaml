@@ -1,0 +1,146 @@
+# Pyspark is vendored due to severity CVEs in the upstream releases.
+# https://gist.github.com/sfc-gh-shchen/6734bed4d23117e68dcf7a6ed132833b
+# https://github.com/AnacondaRecipes/snowpark-connect-feedstock/pull/1
+
+{% set name = "snowpark-connect" %}
+{% set version = "0.21.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 29ccfb28b7c5f16ee7e60a2d95c9b05f1c4e95f40656d5939cd85339f6475adb
+
+build:
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 100
+  skip: True  # [py<310 or py>312]
+
+requirements:
+  host:
+    - python
+    - pip
+    - setuptools
+    - wheel
+  run:
+    - python
+    - certifi >=2025.1.31
+    - cloudpickle
+    # fsspec[http] -> aiohttp
+    - fsspec
+    - aiohttp !=4.0.0a0,!=4.0.0a1
+    - jpype1
+    - protobuf >=4.25.3,<5.0
+    - s3fs >=2025.3.0
+    - snowflake.core >=1.0.5,<2
+    # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
+    # https://github.com/AnacondaRecipes/snowpark-python-feedstock/blob/master/recipe/meta.yaml#L45C6-L45C28
+    - snowflake-snowpark-python >=1.34.0,!=1.35.0
+    - sqlglot >=26.3.8
+    - jaydebeapi
+    - aiobotocore >=2.23.0,<2.24
+    # The following are dependencies for the vendored pyspark
+    - py4j >=0.10.9.7
+    - pandas >=1.0.5
+    - pyarrow >=4.0.0
+    - grpcio >=1.56.0,<1.63
+    - grpcio-status >=1.56.0,<1.63
+    - googleapis-common-protos >=1.56.4
+    - numpy >=1.15,<2
+test:
+  imports:
+    - snowflake.snowpark
+    - snowflake.snowpark_connect
+    - snowflake.snowpark_connect.analyze_plan.map_tree_string
+    - snowflake.snowpark_connect.column_name_handler
+    - snowflake.snowpark_connect.config
+    - snowflake.snowpark_connect.constants
+    - snowflake.snowpark_connect.control_server
+    - snowflake.snowpark_connect.dataframe_container
+    - snowflake.snowpark_connect.date_time_format_mapping
+    - snowflake.snowpark_connect.error.error_mapping
+    - snowflake.snowpark_connect.error.error_utils
+    - snowflake.snowpark_connect.error.exceptions
+    - snowflake.snowpark_connect.execute_plan.map_execution_command
+    - snowflake.snowpark_connect.execute_plan.map_execution_root
+    - snowflake.snowpark_connect.execute_plan.utils
+    - snowflake.snowpark_connect.expression
+    - snowflake.snowpark_connect.expression.literal
+    - snowflake.snowpark_connect.expression.map_cast
+    - snowflake.snowpark_connect.expression.map_expression
+    - snowflake.snowpark_connect.expression.map_sql_expression
+    - snowflake.snowpark_connect.expression.map_unresolved_function
+    - snowflake.snowpark_connect.expression.map_unresolved_star
+    - snowflake.snowpark_connect.expression.typer
+    - snowflake.snowpark_connect.proto.control_pb2
+    - snowflake.snowpark_connect.proto.control_pb2_grpc
+    - snowflake.snowpark_connect.proto.snowflake_expression_ext_pb2
+    - snowflake.snowpark_connect.proto.snowflake_relation_ext_pb2
+    - snowflake.snowpark_connect.relation
+    - snowflake.snowpark_connect.relation.catalogs
+    - snowflake.snowpark_connect.relation.catalogs.abstract_spark_catalog
+    - snowflake.snowpark_connect.relation.catalogs.utils
+    - snowflake.snowpark_connect.relation.io_utils
+    - snowflake.snowpark_connect.relation.map_local_relation
+    - snowflake.snowpark_connect.relation.map_relation
+    - snowflake.snowpark_connect.relation.map_sql
+    - snowflake.snowpark_connect.relation.read
+    - snowflake.snowpark_connect.relation.read.jdbc_read_dbapi
+    - snowflake.snowpark_connect.relation.read.map_read
+    - snowflake.snowpark_connect.relation.read.map_read_jdbc
+    - snowflake.snowpark_connect.relation.read.map_read_table
+    - snowflake.snowpark_connect.relation.read.reader_config
+    - snowflake.snowpark_connect.relation.read.utils
+    - snowflake.snowpark_connect.relation.stage_locator
+    - snowflake.snowpark_connect.relation.utils
+    - snowflake.snowpark_connect.relation.write.jdbc_write_dbapi
+    - snowflake.snowpark_connect.relation.write.map_write
+    - snowflake.snowpark_connect.resources_initializer
+    - snowflake.snowpark_connect.tcm
+    - snowflake.snowpark_connect.type_mapping
+    - snowflake.snowpark_connect.typed_column
+    - snowflake.snowpark_connect.utils
+    - snowflake.snowpark_connect.utils.artifacts
+    - snowflake.snowpark_connect.utils.cache
+    - snowflake.snowpark_connect.utils.concurrent
+    - snowflake.snowpark_connect.utils.context
+    - snowflake.snowpark_connect.utils.describe_query_cache
+    - snowflake.snowpark_connect.utils.identifiers
+    - snowflake.snowpark_connect.utils.interrupt
+    - snowflake.snowpark_connect.utils.io_utils
+    - snowflake.snowpark_connect.utils.pandas_udtf_utils
+    - snowflake.snowpark_connect.utils.profiling
+    - snowflake.snowpark_connect.utils.session
+    - snowflake.snowpark_connect.utils.snowpark_connect_logging
+    - snowflake.snowpark_connect.utils.telemetry
+    - snowflake.snowpark_connect.utils.udf_cache
+    - snowflake.snowpark_connect.utils.udf_helper
+    - snowflake.snowpark_connect.utils.udf_utils
+    - snowflake.snowpark_connect.utils.udtf_helper
+    - snowflake.snowpark_connect.utils.udtf_utils
+    - snowflake.snowpark_connect.utils.xxhash64
+    - snowflake.snowpark_connect.version
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+  requires:
+    - pip
+
+about:
+  home: https://pypi.org/project/snowpark-connect
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE.txt
+  summary: Snowpark Connect for Spark
+  description: |
+    Snowpark Connect for Spark enables developers to run their Spark workloads 
+    directly to Snowflake using the Spark Connect protocol. 
+    This approach decouples the client and server, allowing Spark code to run remotely 
+    against Snowflake's compute engine without managing a Spark cluster. 
+    It offers a streamlined way to integrate Snowflake's governance, security, 
+    and scalability into Spark-based workflows, supporting a familiar 
+    PySpark experience with pushdown optimizations into Snowflake.
+  doc_url: https://pypi.org/project/snowpark-connect
+  dev_url: https://pypi.org/project/snowpark-connect
