@@ -42,7 +42,7 @@ requirements:
     - jaydebeapi
     - aiobotocore >=2.23.0,<2.24
     # The following are dependencies for the vendored pyspark
-    - py4j ==0.10.9.7
+    - py4j >=0.10.9.7
     - pandas >=1.0.5
     - pyarrow >=4.0.0
     - grpcio >=1.56.0,<1.63
