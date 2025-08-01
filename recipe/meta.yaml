@@ -40,7 +40,7 @@ requirements:
     - snowflake-snowpark-python >=1.34.0,!=1.35.0
     - sqlglot >=26.3.8
     - jaydebeapi
-    - aiobotocore >=2.23.0,<3.0.0
+    - aiobotocore >=2.23.0,<2.24
     # The following are dependencies for the vendored pyspark
     - py4j ==0.10.9.7
     - pandas >=1.0.5
