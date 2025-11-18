@@ -1,6 +1,2 @@
 upload_channels:
   - sfe1ed40
-channels:
-  - https://staging.continuum.io/pbp/fs/gcsfs-feedstock/pr4/aa564e0
-  - https://staging.continuum.io/pbp/fs/boto3-feedstock/pr56/54c5ff4
-  - https://staging.continuum.io/pbp/fs/s3transfer-feedstock/pr10/75f6f8a
