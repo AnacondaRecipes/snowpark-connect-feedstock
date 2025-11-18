@@ -3,7 +3,7 @@ About snowpark-connect-feedstock
 
 Feedstock license: [BSD-3-Clause](LICENSE)
 
-Home: [<home_url>](https://pypi.org/project/snowpark-connect)
+Home: https://pypi.org/project/snowpark-connect
 
 Package license: Apache-2.0
 
