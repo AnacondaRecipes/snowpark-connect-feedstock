@@ -145,6 +145,6 @@ about:
     against Snowflake's compute engine without managing a Spark cluster. 
     It offers a streamlined way to integrate Snowflake's governance, security, 
     and scalability into Spark-based workflows, supporting a familiar 
-    PySpark experience with pushdown optimizations into Snowflake.
+    PySpark experience with pushdown optimizations into Snowflake
   doc_url: https://pypi.org/project/snowpark-connect
   dev_url: https://pypi.org/project/snowpark-connect
