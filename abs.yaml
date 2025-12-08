@@ -1,2 +1,4 @@
-upload_channels:
-  - sfe1ed40
+channels:
+  - https://staging.continuum.io/pbp/fs/snowpark-connect-deps-1-feedstock/pr2/5e6db43
+  - https://staging.continuum.io/pbp/fs/snowpark-connect-deps-2-feedstock/pr3/18c30f7
+  - https://staging.continuum.io/pbp/fs/gcsfs-feedstock/pr5/9e0f845
