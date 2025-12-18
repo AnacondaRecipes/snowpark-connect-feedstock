@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.6.0" %}
+{% set version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 2632eddcf97eb0009db81e239f978c90bc4fedc3ddd830446ac1b183e8118243
+  sha256: 4050f1d8ecaa2929f8e0080bf6e480ae0f819fbcd4bb46428f5f129657ceeb7e
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 100
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   skip: true  # [py<310 or py>312]
 
 requirements:
@@ -35,7 +35,7 @@ requirements:
     - snowflake.core >=1.0.5,<2
     # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
     # https://github.com/AnacondaRecipes/snowpark-python-feedstock/blob/master/recipe/meta.yaml#L45C6-L45C28
-    - snowflake-snowpark-python >=1.42.0,<1.43.0
+    - snowflake-snowpark-python >=1.44.0,<1.45.0
     - snowflake-connector-python >=3.18.0,<4.2.0
     - sqlglot >=26.3.8
     - jaydebeapi
