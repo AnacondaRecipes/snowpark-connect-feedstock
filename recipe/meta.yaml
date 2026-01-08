@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.7.0" %}
+{% set version = "1.8.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 4050f1d8ecaa2929f8e0080bf6e480ae0f819fbcd4bb46428f5f129657ceeb7e
+  sha256: 2dfc4331d2d5936ebac09448cac44d8b87ed3b6f441a85cae1db5b37354a3cdf
 
 build:
   number: 100
@@ -39,7 +39,7 @@ requirements:
     - snowflake-connector-python >=3.18.0,<4.2.0
     - sqlglot >=26.3.8
     - jaydebeapi
-    - aiobotocore >=2.23.0,<2.25.0
+    - aiobotocore >=2.23.0,<=2.25.0
     # The following are dependencies for the vendored pyspark
     - py4j ==0.10.9.7
     - pandas >=1.0.5
@@ -58,12 +58,19 @@ test:
     - snowflake.snowpark
     - snowflake.snowpark_connect
     - snowflake.snowpark_connect.analyze_plan.map_tree_string
+    - snowflake.snowpark_connect.client.error_utils
+    - snowflake.snowpark_connect.client.exceptions
+    - snowflake.snowpark_connect.client.query_results
+    - snowflake.snowpark_connect.client.server
+    - snowflake.snowpark_connect.client.utils.session
     - snowflake.snowpark_connect.column_name_handler
+    - snowflake.snowpark_connect.column_qualifier
     - snowflake.snowpark_connect.config
     - snowflake.snowpark_connect.constants
     - snowflake.snowpark_connect.control_server
     - snowflake.snowpark_connect.dataframe_container
     - snowflake.snowpark_connect.date_time_format_mapping
+    - snowflake.snowpark_connect.error.error_codes
     - snowflake.snowpark_connect.error.error_mapping
     - snowflake.snowpark_connect.error.error_utils
     - snowflake.snowpark_connect.error.exceptions
@@ -71,6 +78,9 @@ test:
     - snowflake.snowpark_connect.execute_plan.map_execution_root
     - snowflake.snowpark_connect.execute_plan.utils
     - snowflake.snowpark_connect.expression
+    - snowflake.snowpark_connect.expression.error_utils
+    - snowflake.snowpark_connect.expression.function_defaults
+    - snowflake.snowpark_connect.expression.integral_types_support
     - snowflake.snowpark_connect.expression.literal
     - snowflake.snowpark_connect.expression.map_cast
     - snowflake.snowpark_connect.expression.map_expression
@@ -78,6 +88,8 @@ test:
     - snowflake.snowpark_connect.expression.map_unresolved_function
     - snowflake.snowpark_connect.expression.map_unresolved_star
     - snowflake.snowpark_connect.expression.typer
+    - snowflake.snowpark_connect.includes.python.pyspark.sql.connect.proto.types_pb2
+    - snowflake.snowpark_connect.includes.python.pyspark.sql.types
     - snowflake.snowpark_connect.proto.control_pb2
     - snowflake.snowpark_connect.proto.control_pb2_grpc
     - snowflake.snowpark_connect.proto.snowflake_expression_ext_pb2
@@ -90,11 +102,14 @@ test:
     - snowflake.snowpark_connect.relation.map_local_relation
     - snowflake.snowpark_connect.relation.map_relation
     - snowflake.snowpark_connect.relation.map_sql
+    - snowflake.snowpark_connect.relation.neo4j_utils
     - snowflake.snowpark_connect.relation.read
     - snowflake.snowpark_connect.relation.read.jdbc_read_dbapi
     - snowflake.snowpark_connect.relation.read.map_read
     - snowflake.snowpark_connect.relation.read.map_read_jdbc
+    - snowflake.snowpark_connect.relation.read.map_read_partitioned_parquet
     - snowflake.snowpark_connect.relation.read.map_read_table
+    - snowflake.snowpark_connect.relation.read.metadata_utils
     - snowflake.snowpark_connect.relation.read.reader_config
     - snowflake.snowpark_connect.relation.read.utils
     - snowflake.snowpark_connect.relation.stage_locator
@@ -102,8 +117,12 @@ test:
     - snowflake.snowpark_connect.relation.write.jdbc_write_dbapi
     - snowflake.snowpark_connect.relation.write.map_write
     - snowflake.snowpark_connect.resources_initializer
+    - snowflake.snowpark_connect.server
+    - snowflake.snowpark_connect.server_common
+    - snowflake.snowpark_connect.snowflake_session
     - snowflake.snowpark_connect.tcm
     - snowflake.snowpark_connect.type_mapping
+    - snowflake.snowpark_connect.type_support
     - snowflake.snowpark_connect.typed_column
     - snowflake.snowpark_connect.utils
     - snowflake.snowpark_connect.utils.artifacts
@@ -111,19 +130,32 @@ test:
     - snowflake.snowpark_connect.utils.concurrent
     - snowflake.snowpark_connect.utils.context
     - snowflake.snowpark_connect.utils.describe_query_cache
+    - snowflake.snowpark_connect.utils.env_utils
+    - snowflake.snowpark_connect.utils.expression_transformer
+    - snowflake.snowpark_connect.utils.external_udxf_cache
     - snowflake.snowpark_connect.utils.identifiers
     - snowflake.snowpark_connect.utils.interrupt
     - snowflake.snowpark_connect.utils.io_utils
+    - snowflake.snowpark_connect.utils.java_stored_procedure
+    - snowflake.snowpark_connect.utils.java_udtf_utils
+    - snowflake.snowpark_connect.utils.jvm_udf_utils
+    - snowflake.snowpark_connect.utils.open_telemetry
     - snowflake.snowpark_connect.utils.pandas_udtf_utils
     - snowflake.snowpark_connect.utils.profiling
+    - snowflake.snowpark_connect.utils.scala_udf_utils
+    - snowflake.snowpark_connect.utils.sequence
     - snowflake.snowpark_connect.utils.session
     - snowflake.snowpark_connect.utils.snowpark_connect_logging
+    - snowflake.snowpark_connect.utils.spcs_logger
     - snowflake.snowpark_connect.utils.telemetry
+    - snowflake.snowpark_connect.utils.temporary_view_helper
     - snowflake.snowpark_connect.utils.udf_cache
     - snowflake.snowpark_connect.utils.udf_helper
     - snowflake.snowpark_connect.utils.udf_utils
     - snowflake.snowpark_connect.utils.udtf_helper
     - snowflake.snowpark_connect.utils.udtf_utils
+    - snowflake.snowpark_connect.utils.udxf_import_utils
+    - snowflake.snowpark_connect.utils.upload_java_jar
     - snowflake.snowpark_connect.utils.xxhash64
     - snowflake.snowpark_connect.version
   commands:
