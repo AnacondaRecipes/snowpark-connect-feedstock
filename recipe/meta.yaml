@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.8.0" %}
+{% set version = "1.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 2dfc4331d2d5936ebac09448cac44d8b87ed3b6f441a85cae1db5b37354a3cdf
+  sha256: 10c795c3c34eaa710dd9973591e15d4161bf2e99bb1d3a2a75b2865bd81715a7
 
 build:
   number: 100
@@ -30,7 +30,7 @@ requirements:
     - fsspec
     - aiohttp !=4.0.0a0,!=4.0.0a1
     - jpype1
-    - protobuf >=4.25.3,<6.32
+    - protobuf >=4.25.3,<6.32.0
     - s3fs >=2025.3.0  # prod-297255-inc0132291
     - snowflake.core >=1.0.5,<2
     # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
