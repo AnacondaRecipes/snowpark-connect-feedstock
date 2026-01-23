@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.10.0" %}
+{% set version = "1.10.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 75c06e0aadfdb6b623af175a0ed39623e5a1efbf6ce832f45d6e87f0f9ed00f0
+  sha256: 02d254bed983ddd02614762f3e3630b1815ed79871181d2b4c8ccaee224cb3c1
 
 build:
   number: 100
@@ -39,13 +39,13 @@ requirements:
     - snowflake-connector-python >=3.18.0,<4.2.0
     - sqlglot >=26.3.8
     - jaydebeapi
-    - aiobotocore >=2.23.0,<=2.25.0
+    - aiobotocore >=2.23.0,<=2.26.0
     # The following are dependencies for the vendored pyspark
     - py4j ==0.10.9.7
     - pandas >=1.0.5
     - pyarrow >=4.0.0
-    - grpcio >=1.56.0,<=1.71.0
-    - grpcio-status >=1.56.0,<=1.71.0
+    - grpcio >=1.56.0,<=1.76.0
+    - grpcio-status >=1.56.0,<=1.76.0
     - googleapis-common-protos >=1.56.4
     - numpy >=1.15,<2
     - gcsfs >=2025.2.0
