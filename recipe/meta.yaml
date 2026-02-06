@@ -103,11 +103,12 @@ test:
     - snowflake.snowpark_connect.relation.map_relation
     - snowflake.snowpark_connect.relation.map_sql
     - snowflake.snowpark_connect.relation.neo4j_utils
+    - snowflake.snowpark_connect.relation.output_struct_utils
     - snowflake.snowpark_connect.relation.read
     - snowflake.snowpark_connect.relation.read.jdbc_read_dbapi
     - snowflake.snowpark_connect.relation.read.map_read
     - snowflake.snowpark_connect.relation.read.map_read_jdbc
-    - snowflake.snowpark_connect.relation.read.map_read_partitioned_parquet
+    - snowflake.snowpark_connect.relation.read.map_read_partitioned_file
     - snowflake.snowpark_connect.relation.read.map_read_table
     - snowflake.snowpark_connect.relation.read.metadata_utils
     - snowflake.snowpark_connect.relation.read.reader_config
@@ -126,6 +127,8 @@ test:
     - snowflake.snowpark_connect.typed_column
     - snowflake.snowpark_connect.utils
     - snowflake.snowpark_connect.utils.artifacts
+    - snowflake.snowpark_connect.utils.bz2_file_loader
+    - snowflake.snowpark_connect.utils.bz2_stream_utils
     - snowflake.snowpark_connect.utils.cache
     - snowflake.snowpark_connect.utils.concurrent
     - snowflake.snowpark_connect.utils.context
