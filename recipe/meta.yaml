@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.16.0" %}
+{% set version = "1.17.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 41a02b05072a5ab84a39502ef006c551c94bca9d584d8295b61dedbd7715e86e
+  sha256: 572cabde8e6782c2ec9afafadd53f504dce895b34cfbbf9120f8dfa0a64a42ee
 
 build:
   number: 100
@@ -140,12 +140,13 @@ test:
     - snowflake.snowpark_connect.utils.interrupt
     - snowflake.snowpark_connect.utils.io_utils
     - snowflake.snowpark_connect.utils.java_stored_procedure
+    - snowflake.snowpark_connect.utils.java_udaf_utils
     - snowflake.snowpark_connect.utils.java_udtf_utils
     - snowflake.snowpark_connect.utils.jvm_udf_utils
     - snowflake.snowpark_connect.utils.open_telemetry
     - snowflake.snowpark_connect.utils.pandas_udtf_utils
     - snowflake.snowpark_connect.utils.profiling
-    - snowflake.snowpark_connect.utils.scala_udf_utils
+    - snowflake.snowpark_connect.utils.request_utils
     - snowflake.snowpark_connect.utils.sequence
     - snowflake.snowpark_connect.utils.session
     - snowflake.snowpark_connect.utils.snowpark_connect_logging
@@ -159,6 +160,7 @@ test:
     - snowflake.snowpark_connect.utils.udtf_utils
     - snowflake.snowpark_connect.utils.udxf_import_utils
     - snowflake.snowpark_connect.utils.upload_java_jar
+    - snowflake.snowpark_connect.utils.variant_utils
     - snowflake.snowpark_connect.utils.xxhash64
     - snowflake.snowpark_connect.version
   commands:
