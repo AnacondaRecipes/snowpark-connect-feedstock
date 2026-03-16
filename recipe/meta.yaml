@@ -140,12 +140,13 @@ test:
     - snowflake.snowpark_connect.utils.interrupt
     - snowflake.snowpark_connect.utils.io_utils
     - snowflake.snowpark_connect.utils.java_stored_procedure
+    - snowflake.snowpark_connect.utils.java_udaf_utils
     - snowflake.snowpark_connect.utils.java_udtf_utils
     - snowflake.snowpark_connect.utils.jvm_udf_utils
     - snowflake.snowpark_connect.utils.open_telemetry
     - snowflake.snowpark_connect.utils.pandas_udtf_utils
     - snowflake.snowpark_connect.utils.profiling
-    - snowflake.snowpark_connect.utils.scala_udf_utils
+    - snowflake.snowpark_connect.utils.request_utils
     - snowflake.snowpark_connect.utils.sequence
     - snowflake.snowpark_connect.utils.session
     - snowflake.snowpark_connect.utils.snowpark_connect_logging
@@ -159,6 +160,7 @@ test:
     - snowflake.snowpark_connect.utils.udtf_utils
     - snowflake.snowpark_connect.utils.udxf_import_utils
     - snowflake.snowpark_connect.utils.upload_java_jar
+    - snowflake.snowpark_connect.utils.variant_utils
     - snowflake.snowpark_connect.utils.xxhash64
     - snowflake.snowpark_connect.version
   commands:
