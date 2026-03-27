@@ -134,7 +134,6 @@ test:
     - snowflake.snowpark_connect.utils.describe_query_cache
     - snowflake.snowpark_connect.utils.env_utils
     - snowflake.snowpark_connect.utils.expression_transformer
-    - snowflake.snowpark_connect.utils.external_udxf_cache
     - snowflake.snowpark_connect.utils.identifiers
     - snowflake.snowpark_connect.utils.interrupt
     - snowflake.snowpark_connect.utils.io_utils
@@ -146,9 +145,11 @@ test:
     - snowflake.snowpark_connect.utils.pandas_udtf_utils
     - snowflake.snowpark_connect.utils.profiling
     - snowflake.snowpark_connect.utils.request_utils
+    - snowflake.snowpark_connect.utils.schema_utils
     - snowflake.snowpark_connect.utils.sequence
     - snowflake.snowpark_connect.utils.session
     - snowflake.snowpark_connect.utils.snowpark_connect_logging
+    - snowflake.snowpark_connect.utils.spark_session_cache
     - snowflake.snowpark_connect.utils.spcs_logger
     - snowflake.snowpark_connect.utils.telemetry
     - snowflake.snowpark_connect.utils.temporary_view_helper
