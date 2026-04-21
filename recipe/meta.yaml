@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.21.0" %}
+{% set version = "1.22.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: d6c1c2ccc3995e9e85eba701bcf02c21b990687bb45b0406dc5d46a015f05fe3
+  sha256: d49c78e22060d416c95dc0b50f293b0c0158b31269396faa08554a1bd6c218d0
 
 build:
   number: 100
@@ -35,12 +35,12 @@ requirements:
     - snowflake.core >=1.0.5,<2
     # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
     # https://github.com/AnacondaRecipes/snowpark-python-feedstock/blob/master/recipe/meta.yaml#L45C6-L45C28
-    - snowflake-snowpark-python >=1.48.0,<1.49.0
+    - snowflake-snowpark-python >=1.49.0,<1.50.0
     - snowflake-connector-python >=3.18.0,<4.2.0
     - sqlglot >=26.3.8
     - aiobotocore >=2.23.0,<=2.26.0
     # The following are dependencies for the vendored pyspark
-    - py4j ==0.10.9.9
+    - py4j >=0.10.9.7,<0.10.10.0
     - pandas >=1.0.5
     - pyarrow >=4.0.0,<=18.1.0
     - grpcio >=1.56.0,<=1.76.0
