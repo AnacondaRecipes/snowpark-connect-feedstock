@@ -35,7 +35,7 @@ requirements:
     - snowflake.core >=1.0.5,<2
     # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
     # https://github.com/AnacondaRecipes/snowpark-python-feedstock/blob/master/recipe/meta.yaml#L45C6-L45C28
-    - snowflake-snowpark-python >=1.50.0,<1.51.0
+    - snowflake-snowpark-python >=1.50.1,<1.51.0
     - snowflake-connector-python >=3.18.0,<4.2.0
     - sqlglot >=26.3.8
     - aiobotocore >=2.23.0,<=2.26.0
