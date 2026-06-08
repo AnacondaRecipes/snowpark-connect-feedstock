@@ -30,7 +30,7 @@ requirements:
     - fsspec
     - aiohttp !=4.0.0a0,!=4.0.0a1
     - jpype1  # [win or linux]
-    - jpype1 !=1.7.0,!=1.7.1  # [osx and arm64]
+    - jpype1 !=1.7.0  # [osx and arm64]
     - protobuf >=4.25.3,<6.34.0
     - s3fs >=2025.3.0  # prod-297255-inc0132291
     - snowflake.core >=1.0.5,<2
