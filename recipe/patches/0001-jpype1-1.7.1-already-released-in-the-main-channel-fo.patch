@@ -1,0 +1,26 @@
+From 7e6be7822474b64cc9f7cff30969447f78df7a80 Mon Sep 17 00:00:00 2001
+From: Andrii Osipov <aosipov@anaconda.com>
+Date: Mon, 8 Jun 2026 01:36:44 -0700
+Subject: [PATCH] jpype1 1.7.1 already released in the main channel for
+ osx-arm64
+
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 4026263..6c9abc5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -55,7 +55,7 @@ setup(
+         # Drop the exclusion once upstream restores arm64 macOS wheels
+         # (see https://github.com/jpype-project/jpype/issues/1357).
+         "jpype1; sys_platform != 'darwin' or platform_machine != 'arm64'",
+-        "jpype1!=1.7.0,!=1.7.1; sys_platform == 'darwin' and platform_machine == 'arm64'",
++        "jpype1!=1.7.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
+         "protobuf>=4.25.3,<6.34",
+         "s3fs>=2025.3.0",  # prod-297255-inc0132291
+         "snowflake.core>=1.0.5,<2",
+-- 
+2.39.5 (Apple Git-154)
+
