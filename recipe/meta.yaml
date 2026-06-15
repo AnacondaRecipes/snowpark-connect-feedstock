@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.29.0" %}
+{% set version = "1.30.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: f2e3f8b21619094b73cb18e718edd40b757a3c010381534eaedada9114ad20ca
+  sha256: 7bf5c92524a5c139d01dc85d61e8f1fc5215c98171cce486697d5403fda0a394
   patches:
     - patches/0001-jpype1-1.7.1-already-released-in-the-main-channel-fo.patch
 
