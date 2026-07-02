@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.32.0" %}
+{% set version = "1.33.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: c45bf20d56f56ac0f5dfd34f30a89905eab39598ee1f0ddad9b1460563c7af21
+  sha256: 199bd1e126261d1bdacdf9a0c78ea5c2512ccf7877ade6a98ac8a63debc46c7e
   patches:
     - patches/0001-jpype1-1.7.1-already-released-in-the-main-channel-fo.patch
 
@@ -43,7 +43,11 @@ requirements:
     - snowflake-snowpark-python >=1.52.0,<1.53.0
     - snowflake-connector-python >=3.18.0
     - sqlglot >=26.3.8
-    - aiobotocore >=2.23.0,<=4
+    # aiobotocore is a transitive dep of s3fs (not imported directly).
+    # The cap is here to keep pip's resolver fast and to allow s3fs to
+    # pull in a botocore that satisfies downstream packages such as
+    # boto3>=1.42 (required by sagemaker>=2.255).
+    - aiobotocore >=2.23.0,<4
     # The following are dependencies for the vendored pyspark
     - py4j >=0.10.9.7,<0.10.10.0
     - pandas >=1.0.5
