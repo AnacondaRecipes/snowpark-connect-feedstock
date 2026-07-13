@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.33.0" %}
+{% set version = "1.34.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 199bd1e126261d1bdacdf9a0c78ea5c2512ccf7877ade6a98ac8a63debc46c7e
+  sha256: fbe384a28044a4c8b96e2734643ceef74e8aa2fb3c221f5b3f328c7dd61de68b
   patches:
     - patches/0001-jpype1-1.7.1-already-released-in-the-main-channel-fo.patch
 
@@ -50,7 +50,7 @@ requirements:
     - aiobotocore >=2.23.0,<4
     # The following are dependencies for the vendored pyspark
     - py4j >=0.10.9.7,<0.10.10.0
-    - pandas >=1.0.5
+    - pandas >=1.0.5,<3.0
     - pyarrow >=23.0.1,<25.0.0
     - grpcio >=1.56.0,<=1.78.0
     - grpcio-status >=1.56.0,<=1.78.0
