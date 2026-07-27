@@ -1,5 +1,5 @@
 {% set name = "snowpark-connect" %}
-{% set version = "1.35.0" %}
+{% set version = "1.36.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: b5feaca8157fd265c5faabd5db3a1b372d53334723b27350de65b78f9b318344
+  sha256: 96b5bb9245bc59d2c182f650f4d80e16b5fa9a37523a699eb0639934eb087ed4
   patches:
     - patches/0001-jpype1-1.7.1-already-released-in-the-main-channel-fo.patch
 
@@ -24,8 +24,8 @@ requirements:
     - setuptools
   run:
     - python
-    - snowpark-connect-deps-1 ==3.56.5  # Spark JAR dependencies (59MB)
-    - snowpark-connect-deps-2 ==3.56.5  # Other JAR dependencies (53MB)
+    - snowpark-connect-deps-1 ==3.56.6  # Spark JAR dependencies (59MB)
+    - snowpark-connect-deps-2 ==3.56.6  # Other JAR dependencies (53MB)
     - certifi >=2025.1.31  # prod-297255-inc0132291
     - cloudpickle
     # fsspec[http] -> aiohttp
@@ -35,7 +35,7 @@ requirements:
     # jpype1 1.7.1 is available in the main channel and satisfies upstream's requirement.
     # 1.7.0 is excluded on osx-arm64 due to a missing universal2 binary (see https://github.com/jpype-project/jpype/issues/1357).
     - jpype1 !=1.7.0  # [osx and arm64]
-    - protobuf >=4.25.3,<6.34.0
+    - protobuf >=3.20.2,<6.34.0
     - s3fs >=2025.3.0  # prod-297255-inc0132291
     - snowflake.core >=1.0.5,<2
     # snowflake-snowpark-python[pandas] implicitly uses pandas<3 
@@ -51,15 +51,16 @@ requirements:
     # The following are dependencies for the vendored pyspark
     - py4j >=0.10.9.7,<0.10.10.0
     - pandas >=1.0.5,<3.0
-    - pyarrow >=23.0.1,<25.0.0
-    - grpcio >=1.56.0,<=1.78.0
-    - grpcio-status >=1.56.0,<=1.78.0
+    - pyarrow >=14.0.1,<25.0.0,!=15.*,!=16.*,!=17.*,!=18.*,!=19.*,!=20.*,!=21.*,!=22.*,!=23.0.0
+    - grpcio >=1.48.2,<=1.78.0
+    - grpcio-status >=1.41.1,<=1.78.0
     - googleapis-common-protos >=1.56.4
     - numpy >=1.15
     - gcsfs >=2025.2.0
   run_condstrained:
     # jdk
-    - jdk4py ==17.0.9.2
+    - jdk4py >=21.0.4.0  # [linux and aarch64]
+    - jdk4py ==17.0.9.2  # [linux and (not aarch64)]
     # iceberg
     - snowpark-connect-deps-iceberg ==1.0.2
 

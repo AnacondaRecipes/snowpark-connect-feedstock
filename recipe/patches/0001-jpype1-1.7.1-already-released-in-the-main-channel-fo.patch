@@ -9,7 +9,7 @@ Subject: [PATCH] jpype1 1.7.1 already released in the main channel for
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/setup.py b/setup.py
-index 4026263..6c9abc5 100644
+index b7694d5..687574f 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -55,7 +55,7 @@ setup(
@@ -18,7 +18,7 @@ index 4026263..6c9abc5 100644
          "jpype1; sys_platform != 'darwin' or platform_machine != 'arm64'",
 -        "jpype1!=1.7.0,!=1.7.1; sys_platform == 'darwin' and platform_machine == 'arm64'",
 +        "jpype1!=1.7.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
-         "protobuf>=4.25.3,<6.34",
+         "protobuf>=3.20.2,<6.34",
          "s3fs>=2025.3.0",  # prod-297255-inc0132291
          "snowflake.core>=1.0.5,<2",
 -- 
